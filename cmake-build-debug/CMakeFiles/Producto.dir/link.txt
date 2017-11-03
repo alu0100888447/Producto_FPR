@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Producto.dir/main.cpp.o  -o Producto 
