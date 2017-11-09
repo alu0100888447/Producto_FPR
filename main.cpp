@@ -1,9 +1,12 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 int producto (int x, int y);
 int suma (int x, int y);
-int sucesor (int x);
+int S(int x);
+int P(std::vector <int> v, int x);
+int Zero(int x);
 
 int main (int argc, char* argv[]) {
     int a = 0;
@@ -35,28 +38,40 @@ int main (int argc, char* argv[]) {
 
 int producto (int x, int y) {
     if (x != 0 && y != 0) {
-        return suma(producto(x, --y), x);
+        std::vector<int> v = {x, y, producto(x, --y)};
+        return suma(P(v,3),P(v,1));
     }
     else {
-      return 0;
+      std::vector<int> v = {x};
+      return Zero(P(v, 1));
     }
 }
 
 int suma (int x, int y) {
     if (x != 0 && y != 0) {
-        return sucesor(suma(x, --y));
+        std::vector<int> v = {x, y, suma(x, --y)};
+        return S(P(v, 3));
     }
     else {
         if (x == 0) {
-            return y;
+            std::vector<int> v = {y};
+            return P(v,1);
         }
         else {
-            return x;
+            std::vector<int> v = {x};
+            return P(v, 1);
         }
     }
 }
 
-int sucesor (int x) {
+int S (int x) {
     return ++x;
 }
 
+int P (std::vector <int> v, int x) {
+    return v[x - 1];
+}
+
+int Zero(int x) {
+    return 0;
+}
