@@ -37,9 +37,9 @@ int main (int argc, char* argv[]) {
 }
 
 int producto (int x, int y) {
-    if (x != 0 && y != 0) {
-        std::vector<int> v = {x, y, producto(x, --y)};
-        return suma(P(v,3),P(v,1));
+    if (y != 0) {
+      std::vector<int> v = {x, y, producto(x, --y)};
+      return suma(P(v,3),P(v,1));
     }
     else {
       std::vector<int> v = {x};
@@ -48,19 +48,13 @@ int producto (int x, int y) {
 }
 
 int suma (int x, int y) {
-    if (x != 0 && y != 0) {
-        std::vector<int> v = {x, y, suma(x, --y)};
-        return S(P(v, 3));
+    if (y != 0) {
+      std::vector<int> v = {x, y, suma(x, --y)};
+      return S(P(v, 3));
     }
     else {
-        if (x == 0) {
-            std::vector<int> v = {y};
-            return P(v,1);
-        }
-        else {
-            std::vector<int> v = {x};
-            return P(v, 1);
-        }
+      std::vector<int> v = {x};
+      return P(v, 1);
     }
 }
 
